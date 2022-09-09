@@ -92,3 +92,33 @@ In a new terminal window use the command
 ~~~ bash
 behave .\features\restapp.feature
 ~~~
+
+### Example Tests 
+
+##### Unit
+
+There are unit testes included with this project, we are testing the item builder for the object that it returns. 
+
+'''python
+def test_item_builder_data(self):
+        """
+        Test to see if item_builder returns the correctly keyed dictionary object
+        based on raw data passed to it
+        """
+        expected = {'name': 'Tool', 'description': 'Hammer', 'price': 10.5, '_id': 99}
+        self.assertEqual(item_builder("Tool", "Hammer", 10.50, 99), expected)
+'''
+
+##### Integration
+
+An example integration test is included in the project. 
+
+'''python
+ def test_create_post_request_status(self):
+        """
+        Test to see if RESTful API returns a 201 (CREATED) status ok for a
+        Create (Post) request.  Note.  API will need to be running(!)
+        """
+        response = requests.post(BASE_URL + '/create', json = {'name': 'Tool', 'description': 'Hammer', 'price': 10.5})
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+'''
