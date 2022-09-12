@@ -37,4 +37,4 @@ jobs:
           echo test, and deploy your project.
           
       - name: List current directory contents
-      run: ls -la
+        run: ls -la
